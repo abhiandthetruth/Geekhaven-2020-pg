@@ -1,7 +1,5 @@
 <?php
     $connection = pg_connect(getenv("DATABASE_URL"));
-    pg_query($connection,"CREATE DATABASE geekhav") ;
-    pg_select_db($connection,'geekhav');
     $query = "CREATE TABLE social_handles (
         `social_handles_id` varchar(255),
         `github` varchar(255),
