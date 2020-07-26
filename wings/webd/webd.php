@@ -8,7 +8,7 @@
     while($row = pg_fetch_assoc($result)){
         $wing = $row['wing'];
         $info = $row['info'];
-        $logo = $row['logo'];
+        $logo = pg_unescape_bytea($row['logo']);
         $image = pg_unescape_bytea($row['image']);
         $wingName =$row['wing'];
         $link = $row['web_link'];
@@ -92,12 +92,12 @@
                 $date = $row['date'];
                 $date = explode("-",$date);
                 $mon = $date[1]+10 -10;
-                $image = $row['image'];
+                $image = pg_unescape_bytea($row['image']);
                 $link = $row['link'];
                 $time = $row['time'];
                 $topic = $row['topic'];
                 $details = $row['details'];
-                $image = $row['image'];
+                $image = pg_unescape_bytea($row['image']);
                 ?>
                 <div class="col-12 col-sm-12 col-md-6 event-1">
                   <div class="row">
