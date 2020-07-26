@@ -14,7 +14,7 @@
                     $blog_link = $_POST['blog_link'];
                     $src_code = $_POST['source_code'];
                     $des = $_POST['description'];
-                    $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+                    $image = pg_esacpe_bytea(file_get_contents($_FILES['image']['tmp_name']));
                     $query = " INSERT INTO Projects VALUES('$wingID','$member_id','$project_name','$pro_link','$blog_link','$src_code','$des','$image')";
                     $query_run = pg_query($connection,$query);
                     

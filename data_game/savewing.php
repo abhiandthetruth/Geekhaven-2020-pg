@@ -8,8 +8,8 @@
             $wing = $_POST['wing'];
             $info = $_POST['info'];
             $link = $_POST['link'];
-            $logo = addslashes(file_get_contents($_FILES['logo']['tmp_name']));
-            $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+            $logo = pg_escape_bytea(file_get_contents($_FILES['logo']['tmp_name']));
+            $image = pg_escape_bytea(file_get_contents($_FILES['image']['tmp_name']));
             $wing_id = time()*1000;
             $query = "SELECT * FROM wings WHERE wing='$wing'" ;
             $query_run = pg_query($connection,$query);       
@@ -29,8 +29,8 @@
             $info = $_POST['new_info'];
             $web_link = $_POST['web_link'];
             
-            $n_logo = addslashes(file_get_contents($_FILES['new_logo']['tmp_name']));
-            $n_image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+            $n_logo = pg_esacpe_bytea(file_get_contents($_FILES['new_logo']['tmp_name']));
+            $n_image = pg_esacpe_bytea(file_get_contents($_FILES['image']['tmp_name']));
             
             
             $query = "UPDATE wings SET `wing`='$wing',`info`='$info',`logo`='$n_logo',`image`='$n_image',`web_link`='$web_link'  WHERE `wing_id`='$wing_id'" ;  
