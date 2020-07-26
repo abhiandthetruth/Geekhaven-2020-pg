@@ -143,7 +143,7 @@
 
         <section class="container title-cards">
         <?php
-          $query = "SELECT * FROM Projects WHERE `wing_id`='$wing_id'";
+          $query = "SELECT * FROM Projects WHERE wing_id::int='$wing_id'";
 
           $result = pg_query($connection,$query);
           while($row = pg_fetch_assoc($result)){
@@ -226,7 +226,7 @@
                 <img src="../../images/zigzag.png" class="zigzag-team">
               </div>
                 <?php
-                    $query = "SELECT * FROM member WHERE `wing`='$wing' AND `post`='coordinator'";
+                    $query = "SELECT * FROM member WHERE wing='$wing' AND post='coordinator'";
                     $result = pg_query($connection,$query);
                     while($row = pg_fetch_assoc($result)){
                         $name = $row['name'];
@@ -235,7 +235,7 @@
                         $des = $row['description'];
                         $hof = $row['hof'];
                         $social_id = $row['social_handles'];
-                        $query = "SELECT * FROM social_handles WHERE `social_handles_id`='$social_id'";
+                        $query = "SELECT * FROM social_handles WHERE social_handles_id='$social_id'";
                         $res = pg_query($connection,$query);
                         while($data = pg_fetch_assoc($res)){
                             $git = $data['github'];
@@ -288,7 +288,7 @@
               </div>
               <div class="row">
               <?php
-                    $query = "SELECT * FROM member WHERE `wing`='$wing' AND `post`='member'";
+                    $query = "SELECT * FROM member WHERE wing='$wing' AND post='member'";
                     $result = pg_query($connection,$query);
                     while($row = pg_fetch_assoc($result)){
                         $name = $row['name'];
@@ -297,7 +297,7 @@
                         $des = $row['description'];
                         $hof = $row['hof'];
                         $social_id = $row['social_handles'];
-                        $query = "SELECT * FROM social_handles WHERE `social_handles_id`='$social_id'";
+                        $query = "SELECT * FROM social_handles WHERE social_handles_id='$social_id'";
                         $res = pg_query($connection,$query);
                         while($data = pg_fetch_assoc($res)){
                             $git = $data['github'];
@@ -364,7 +364,7 @@
         <hr class="line">
         <div class="row div-blog" style="display: flex;justify-content: space-evenly;margin-left: 0px;margin-right: 0px;">        
         <?php
-          $query = "SELECT * FROM blogs WHERE `wing_id`='$wing_id' ";
+          $query = "SELECT * FROM blogs WHERE wing_id::int='$wing_id' ";
           $result = pg_query($connection,$query);
           while($row = pg_fetch_assoc($result)){
               $title = $row['blog_title'];
