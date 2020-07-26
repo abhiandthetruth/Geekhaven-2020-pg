@@ -16,7 +16,7 @@
                     $des = $_POST['description'];
                     $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
                     $query = " INSERT INTO Projects VALUES('$wingID','$member_id','$project_name','$pro_link','$blog_link','$src_code','$des','$image')";
-                    $query_run = mysqli_query($connection,$query);
+                    $query_run = pg_query($connection,$query);
                     
                     header('location:../geekhaven/project.php');   
                 }
@@ -24,12 +24,12 @@
             if(isset($_POST['select_pro_btn'])){
                 $name = $_POST['projects'];
                 $query = "SELECT * FROM Projects WHERE `project_name`='$name'";
-                $query_run = mysqli_query($connection,$query);
-                $ex = mysqli_num_rows($query_run);
+                $query_run = pg_query($connection,$query);
+                $ex = pg_num_rows($query_run);
                 echo $ex;
-                if(mysqli_num_rows($query_run)>0){
+                if(pg_num_rows($query_run)>0){
                     $query = "DELETE FROM Projects WHERE `project_name`='$name'";
-                    $query_run = mysqli_query($connection,$query);
+                    $query_run = pg_query($connection,$query);
                     
                     header('location:../geekhaven/project.php');                
                 }else{

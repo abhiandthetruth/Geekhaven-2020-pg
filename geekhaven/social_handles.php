@@ -48,13 +48,13 @@
         <?php
             $mem_id = $_SESSION['member_id'];
             $query = "SELECT * FROM member WHERE member_id='$mem_id'";
-            $query_run = mysqli_query($connection,$query);
-            while($row = mysqli_fetch_assoc($query_run)){
+            $query_run = pg_query($connection,$query);
+            while($row = pg_fetch_assoc($query_run)){
                 $handle_id =$row['social_handles']; 
             }
             $query = "SELECT * FROM social_handles WHERE social_handles_id='$handle_id'";
-            $query_run = mysqli_query($connection,$query);
-            while($row = mysqli_fetch_assoc($query_run)){
+            $query_run = pg_query($connection,$query);
+            while($row = pg_fetch_assoc($query_run)){
                 $handle_id =$row['social_handles_id'];
                 $_SESSION['handleID'] = $handle_id;
                 $git = $row['github'];

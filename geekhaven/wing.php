@@ -84,8 +84,8 @@
                 <option selected="selected">Choose one</option>
                         <?php
                             $query = 'SELECT * FROM wings';
-                            $result = mysqli_query($connection,$query);
-                            while($row = mysqli_fetch_assoc($result)){
+                            $result = pg_query($connection,$query);
+                            while($row = pg_fetch_assoc($result)){
                                 $wing_id =$row['wing_id'];
                                 $wing =$row['wing'];
                                 ?>
@@ -109,8 +109,8 @@
             if(isset($_POST['select_btn'])){
                 $wingID = $_POST['wings'];
                 $query = "SELECT * FROM wings WHERE wing_id='$wingID'";
-                $query_run = mysqli_query($connection,$query);
-                while($row = mysqli_fetch_assoc($query_run)){
+                $query_run = pg_query($connection,$query);
+                while($row = pg_fetch_assoc($query_run)){
                     $wing_id =$row['wing_id'];    
                     $_SESSION['wingID'] = $wing_id;            
                     $wing =$row['wing'];

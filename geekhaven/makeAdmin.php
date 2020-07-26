@@ -58,13 +58,13 @@
                 <option selected="selected" style="color:black;">Choose one</option>
                     <?php
                         $query = 'SELECT * FROM credentials';
-                        $result = mysqli_query($connection,$query);
-                        while($row = mysqli_fetch_assoc($result)){
+                        $result = pg_query($connection,$query);
+                        while($row = pg_fetch_assoc($result)){
                             $member_id =$row['member_id'];
                             $cred_id = $row['credentialsID'];
                             $query = "SELECT * FROM member WHERE `member_id`='$member_id'";
-                            $query_run = mysqli_query($connection,$query);
-                            $res = mysqli_fetch_assoc($query_run);
+                            $query_run = pg_query($connection,$query);
+                            $res = pg_fetch_assoc($query_run);
                             $name =$res['name'];
                             ?>
                             <option value="<?php echo $cred_id; ?>"><?php echo $name; ?></option>
@@ -102,13 +102,13 @@
 
                 <?php
                     $query = 'SELECT * FROM credentials';
-                    $result = mysqli_query($connection,$query);
-                    while($row = mysqli_fetch_assoc($result)){
+                    $result = pg_query($connection,$query);
+                    while($row = pg_fetch_assoc($result)){
                         $admin_value =$row['admin_value'];
                         $member_id =$row['member_id'];
                         $query = "SELECT * FROM member WHERE `member_id`='$member_id'";
-                        $query_run = mysqli_query($connection,$query);
-                        $res = mysqli_fetch_assoc($query_run);
+                        $query_run = pg_query($connection,$query);
+                        $res = pg_fetch_assoc($query_run);
                         $name =$res['name'];
                         
                         ?>

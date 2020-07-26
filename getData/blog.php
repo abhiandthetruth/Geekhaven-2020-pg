@@ -10,8 +10,8 @@
 <body>
     <?php
         $query = 'SELECT * FROM blogs';
-        $result = mysqli_query($connection,$query);
-        while($row = mysqli_fetch_assoc($result)){
+        $result = pg_query($connection,$query);
+        while($row = pg_fetch_assoc($result)){
             $title = $row['blog_title'];
             $des = $row['description'];
             $image = $row['image'];

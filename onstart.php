@@ -1,7 +1,7 @@
 <?php
-    $connection = mysqli_connect("localhost","root","");
-    mysqli_query($connection,"CREATE DATABASE geekhav") ;
-    mysqli_select_db($connection,'geekhav');
+    $connection = pg_connect(getenv("DATABASE_URL"));
+    pg_query($connection,"CREATE DATABASE geekhav") ;
+    pg_select_db($connection,'geekhav');
     $query = "CREATE TABLE social_handles (
         `social_handles_id` varchar(255),
         `github` varchar(255),
@@ -17,7 +17,7 @@
         PRIMARY KEY (social_handles_id)       
     );";
 
-    mysqli_query($connection,$query) ;
+    pg_query($connection,$query) ;
 
     $query = "CREATE TABLE member (
         `name` varchar(255),
@@ -35,7 +35,7 @@
         FOREIGN KEY (social_handles) REFERENCES social_handles(social_handles_id)   
     );";
 
-    mysqli_query($connection,$query) ;
+    pg_query($connection,$query) ;
 
     $query = "CREATE TABLE past_members (
         `name` varchar(255),
@@ -52,7 +52,7 @@
         FOREIGN KEY (social_handles) REFERENCES social_handles(social_handles_id)   
     );";
 
-    mysqli_query($connection,$query) ;
+    pg_query($connection,$query) ;
 
     $query = "CREATE TABLE credentials (
         `credentialsID` varchar(255),
@@ -64,7 +64,7 @@
         FOREIGN KEY (member_id) REFERENCES member(member_id)   
     );";
 
-    mysqli_query($connection,$query) ;
+    pg_query($connection,$query) ;
 
     $query = "CREATE TABLE wings (
         `wing_id` varchar(255),
@@ -75,7 +75,7 @@
         PRIMARY KEY (wing_id)
     );";
 
-    mysqli_query($connection,$query) ;
+    pg_query($connection,$query) ;
 
     $query = "CREATE TABLE Projects (
         `wing_id` varchar(255),
@@ -90,7 +90,7 @@
         FOREIGN KEY (member_id) REFERENCES member(member_id)
     );";
 
-    mysqli_query($connection,$query) ;
+    pg_query($connection,$query) ;
 
     $query = "CREATE TABLE blogs (
         `wing_id` varchar(255),
@@ -103,7 +103,7 @@
         FOREIGN KEY (wing_id) REFERENCES wings(wing_id)        
     );";
 
-    mysqli_query($connection,$query) ;
+    pg_query($connection,$query) ;
 
     $query = "CREATE TABLE announcements (
         `member_id` varchar(255),
@@ -120,7 +120,7 @@
         FOREIGN KEY (member_id) REFERENCES member(member_id)
     );";
 
-    mysqli_query($connection,$query) ;
+    pg_query($connection,$query) ;
 
     $query = "CREATE TABLE contact (
         `made_on` varchar(255),
@@ -132,16 +132,16 @@
         `gender`varchar(255)               
     );";
 
-    mysqli_query($connection,$query) ;
+    pg_query($connection,$query) ;
     
     $query = "INSERT INTO social_handles VALUES('00000','','','','','','','','','','')";
-    $query_run = mysqli_query($connection,$query);                             
+    $query_run = pg_query($connection,$query);                             
     $query = "INSERT INTO member VALUES ('', '', '', '', '22222', '', '00000', '11111', 'coordinator', 'exWing', '2020')";
-    $query_run = mysqli_query($connection,$query);     
+    $query_run = pg_query($connection,$query);     
     $query = "INSERT INTO credentials VALUES('11111','exUser','exPass','1','22222')";
-    $query_run = mysqli_query($connection,$query);
+    $query_run = pg_query($connection,$query);
     $query = "INSERT INTO wings VALUES('33333','X','Only for Overall coordinators','')";
-    $query_run = mysqli_query($connection,$query);
+    $query_run = pg_query($connection,$query);
 
     echo "Database created";
 

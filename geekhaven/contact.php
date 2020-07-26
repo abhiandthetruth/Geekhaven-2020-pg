@@ -113,7 +113,7 @@
                 $gender = $_POST['gender'];
                 $date = date("jS  F Y ");
                 $query = "INSERT INTO contact VALUES('$date','$first','$second','$des','$email','$phone','$gender')";
-                $query_run = mysqli_query($connection,$query);                
+                $query_run = pg_query($connection,$query);                
             }
           ?>
         </div>   

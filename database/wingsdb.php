@@ -1,4 +1,4 @@
 <?php
-    $connection = mysqli_connect("localhost","root","");
-    mysqli_select_db($connection,'geekhav');
+    $connection = pg_connect(getenv("DATABASE_URL"));
+    pg_select_db($connection,'geekhav');
 ?>

@@ -59,8 +59,8 @@
                             <select id="wings" name="wings" style="color: #707070;">
                             <?php
                                 $query = 'SELECT * FROM wings';
-                                $result = mysqli_query($connection,$query);
-                                while($row = mysqli_fetch_assoc($result)){
+                                $result = pg_query($connection,$query);
+                                while($row = pg_fetch_assoc($result)){
                                     $wing_id =$row['wing_id'];
                                     $wing =$row['wing'];
                                 ?>
@@ -116,8 +116,8 @@
                     <option selected="selected">Choose one</option>
                     <?php
                         $query = 'SELECT * FROM Projects';
-                        $result = mysqli_query($connection,$query);
-                        while($row = mysqli_fetch_assoc($result)){
+                        $result = pg_query($connection,$query);
+                        while($row = pg_fetch_assoc($result)){
                             $name =$row['project_name'];
                             
                             ?>

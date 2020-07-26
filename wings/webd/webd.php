@@ -1,11 +1,11 @@
 <?php
   if(isset($_GET['id'])){
     require "../../database/member_info.php";
-    $id=mysqli_real_escape_string($connection,$_GET['id']);
+    $id=pg_real_escape_string($connection,$_GET['id']);
     $wing_id = $id;
     $query = "SELECT * FROM wings WHERE `wing_id`='$wing_id'";
-    $result = mysqli_query($connection,$query);
-    while($row = mysqli_fetch_assoc($result)){
+    $result = pg_query($connection,$query);
+    while($row = pg_fetch_assoc($result)){
         $wing = $row['wing'];
         $info = $row['info'];
         $logo = $row['logo'];
@@ -84,8 +84,8 @@
             <?php
               $query = "SELECT * FROM announcements WHERE `organizer`='$wing'";
 
-              $result = mysqli_query($connection,$query);
-              while($row = mysqli_fetch_assoc($result)){
+              $result = pg_query($connection,$query);
+              while($row = pg_fetch_assoc($result)){
                 $ann_name = $row['name'];
                 $ann_info = $row['details'];
                 $venue = $row['venue'];
@@ -145,8 +145,8 @@
         <?php
           $query = "SELECT * FROM Projects WHERE `wing_id`='$wing_id'";
 
-          $result = mysqli_query($connection,$query);
-          while($row = mysqli_fetch_assoc($result)){
+          $result = pg_query($connection,$query);
+          while($row = pg_fetch_assoc($result)){
             $pro_name = $row['project_name'];
             $pro_link = $row['project_link'];
             $code = $row['source_code_link'];
@@ -227,8 +227,8 @@
               </div>
                 <?php
                     $query = "SELECT * FROM member WHERE `wing`='$wing' AND `post`='coordinator'";
-                    $result = mysqli_query($connection,$query);
-                    while($row = mysqli_fetch_assoc($result)){
+                    $result = pg_query($connection,$query);
+                    while($row = pg_fetch_assoc($result)){
                         $name = $row['name'];
                         $roll_no = $row['roll_no'];
                         $image = $row['image'];
@@ -236,8 +236,8 @@
                         $hof = $row['hof'];
                         $social_id = $row['social_handles'];
                         $query = "SELECT * FROM social_handles WHERE `social_handles_id`='$social_id'";
-                        $res = mysqli_query($connection,$query);
-                        while($data = mysqli_fetch_assoc($res)){
+                        $res = pg_query($connection,$query);
+                        while($data = pg_fetch_assoc($res)){
                             $git = $data['github'];
                             $mail = $data['mail'];
                             $face = $data['facebook'];
@@ -289,8 +289,8 @@
               <div class="row">
               <?php
                     $query = "SELECT * FROM member WHERE `wing`='$wing' AND `post`='member'";
-                    $result = mysqli_query($connection,$query);
-                    while($row = mysqli_fetch_assoc($result)){
+                    $result = pg_query($connection,$query);
+                    while($row = pg_fetch_assoc($result)){
                         $name = $row['name'];
                         $roll_no = $row['roll_no'];
                         $image = $row['image'];
@@ -298,8 +298,8 @@
                         $hof = $row['hof'];
                         $social_id = $row['social_handles'];
                         $query = "SELECT * FROM social_handles WHERE `social_handles_id`='$social_id'";
-                        $res = mysqli_query($connection,$query);
-                        while($data = mysqli_fetch_assoc($res)){
+                        $res = pg_query($connection,$query);
+                        while($data = pg_fetch_assoc($res)){
                             $git = $data['github'];
                             $mail = $data['mail'];
                             $face = $data['facebook'];
@@ -365,8 +365,8 @@
         <div class="row div-blog" style="display: flex;justify-content: space-evenly;margin-left: 0px;margin-right: 0px;">        
         <?php
           $query = "SELECT * FROM blogs WHERE `wing_id`='$wing_id' ";
-          $result = mysqli_query($connection,$query);
-          while($row = mysqli_fetch_assoc($result)){
+          $result = pg_query($connection,$query);
+          while($row = pg_fetch_assoc($result)){
               $title = $row['blog_title'];
               $des = $row['description'];
               $image = $row['image'];

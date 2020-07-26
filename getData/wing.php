@@ -10,8 +10,8 @@
 <body>
     <?php
         $query = 'SELECT * FROM wings';
-        $result = mysqli_query($connection,$query);
-        while($row = mysqli_fetch_assoc($result)){
+        $result = pg_query($connection,$query);
+        while($row = pg_fetch_assoc($result)){
             $wing = $row['wing'];
             $info = $row['info'];
             $logo = $row['logo'];

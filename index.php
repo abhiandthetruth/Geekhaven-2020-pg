@@ -1,8 +1,8 @@
 <?php
     session_start();
     include 'geekhaven/auth.php';
-    $connection = mysqli_connect("localhost","root","");
-    mysqli_select_db($connection,'geekhav');
+    $connection = pg_connect(getenv("DATABASE_URL"));
+    pg_select_db($connection,'geekhav');
 ?>
 <html lang="en">
 <head>
@@ -79,8 +79,8 @@
     <section class="container-fluid" id="wings-section">
     <?php
         $query = 'SELECT * FROM wings';
-        $result = mysqli_query($connection,$query);
-        while($row = mysqli_fetch_assoc($result)){
+        $result = pg_query($connection,$query);
+        while($row = pg_fetch_assoc($result)){
             $wingname =$row['wing'];
             $winginfo =$row['info'];
             $id =$row['wing_id'];
@@ -124,18 +124,18 @@
             <?php
                 $admin_value='2';        
                 $query = "SELECT * FROM credentials WHERE admin_value=$admin_value ";
-                $result = mysqli_query($connection,$query);
+                $result = pg_query($connection,$query);
                 
-                while($row = mysqli_fetch_assoc($result)){
+                while($row = pg_fetch_assoc($result)){
                     $id =$row['member_id'];
                     $query = "SELECT * FROM member WHERE member_id = $id";
-                    $result = mysqli_query($connection,$query);
-                    if($member_array = mysqli_fetch_assoc($result)){
+                    $result = pg_query($connection,$query);
+                    if($member_array = pg_fetch_assoc($result)){
                         $member = $member_array;
                         $name = $member['name']; 
                         $social=$member['social_handles'];    
                         $querySocial = "SELECT * FROM social_handles WHERE social_handles_id = $social";
-                        $resultSocial = mysqli_query($connection,$querySocial);
+                        $resultSocial = pg_query($connection,$querySocial);
                         ?>
                     
                         <div class="col-12 col-sm-6 overall-box">
@@ -148,7 +148,7 @@
                             </p>
                             
                             <?php 
-                                if($social_array = mysqli_fetch_assoc($resultSocial)){
+                                if($social_array = pg_fetch_assoc($resultSocial)){
                                     $fb=$social_array['facebook'];
                                     $insta=$social_array['instagram'];
                                     $twitter=$social_array['twitter'];

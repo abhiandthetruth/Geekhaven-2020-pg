@@ -52,8 +52,8 @@
         <?php
             $mem_id = $_SESSION['member_id'];
             $query = "SELECT * FROM member WHERE member_id='$mem_id'";
-            $query_run = mysqli_query($connection,$query);
-            while($row = mysqli_fetch_assoc($query_run)){
+            $query_run = pg_query($connection,$query);
+            while($row = pg_fetch_assoc($query_run)){
                 $name =$row['name'];   
                 $roll =$row['roll_no'];
                 $image =$row['image'];
@@ -97,7 +97,7 @@
                 $img = $_POST['image'];
                 $description = $_POST['description'];
                 $query = "UPDATE member SET `name`='$name',`roll_no`='$roll',`image`='$img',`description`='$description' WHERE `member_id`='$mem_id'";
-                $query_run = mysqli_query($connection,$query);
+                $query_run = pg_query($connection,$query);
                 echo "UPDATED SUCCESSFULLY";
             }
             // echo $id;

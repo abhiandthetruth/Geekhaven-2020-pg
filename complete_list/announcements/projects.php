@@ -2,11 +2,11 @@
     
     if(isset($_GET['id'])){
       require "../../database/member_info.php";
-      $id=mysqli_real_escape_string($connection,$_GET['id']);
+      $id=pg_real_escape_string($connection,$_GET['id']);
       $wing_id = $id;
       $query = "SELECT * FROM wings WHERE `wing_id`='$wing_id'";
-      $result = mysqli_query($connection,$query);
-      while($row = mysqli_fetch_assoc($result)){
+      $result = pg_query($connection,$query);
+      while($row = pg_fetch_assoc($result)){
           $wing = $row['wing'];
           $info = $row['info'];
           $logo = $row['logo'];
@@ -67,8 +67,8 @@
         <?php
           $query = "SELECT * FROM Projects WHERE `wing_id`='$wing_id'";
 
-          $result = mysqli_query($connection,$query);
-          while($row = mysqli_fetch_assoc($result)){
+          $result = pg_query($connection,$query);
+          while($row = pg_fetch_assoc($result)){
             $pro_name = $row['project_name'];
             $pro_link = $row['project_link'];
             $code = $row['source_code_link'];

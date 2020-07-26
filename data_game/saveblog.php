@@ -14,17 +14,17 @@
                     $des = $_POST['description'];
                     $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
                     $query = " INSERT INTO blogs VALUES('$wingID','$member_id','$blog_title','$des','$blog_link','$image')";
-                    $query_run = mysqli_query($connection,$query);
+                    $query_run = pg_query($connection,$query);
                     header('location:../geekhaven/blog.php');
                 }
             }
             if(isset($_POST['select_blog_btn'])){
                 $name = $_POST['blogs'];
                 $query = "SELECT * FROM blogs WHERE `blog_title`='$name'";
-                $query_run = mysqli_query($connection,$query);
-                if(mysqli_num_rows($query_run)>0){
+                $query_run = pg_query($connection,$query);
+                if(pg_num_rows($query_run)>0){
                     $query = "DELETE FROM blogs WHERE `blog_title`='$name'";
-                    $query_run = mysqli_query($connection,$query);
+                    $query_run = pg_query($connection,$query);
                     header('location:../geekhaven/blog.php');
                 }else{
                     echo "error : CANNOT REMOVE";

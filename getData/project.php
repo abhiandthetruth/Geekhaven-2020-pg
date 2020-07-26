@@ -10,8 +10,8 @@
 <body>
     <?php
         $query = 'SELECT * FROM Projects';
-        $result = mysqli_query($connection,$query);
-        while($row = mysqli_fetch_assoc($result)){
+        $result = pg_query($connection,$query);
+        while($row = pg_fetch_assoc($result)){
             $name = $row['project_name'];
             $pro_link = $row['project_link'];
             $code = $row['source_code_link'];

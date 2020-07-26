@@ -90,8 +90,8 @@
           <option selected="selected">Choose one Wing</option>
                 <?php
                     $query = 'SELECT * FROM wings';
-                    $result = mysqli_query($connection,$query);
-                    while($row = mysqli_fetch_assoc($result)){
+                    $result = pg_query($connection,$query);
+                    while($row = pg_fetch_assoc($result)){
                         $wing =$row['wing'];
                         ?>
                         <option value="<?php echo $wing; ?>"><?php echo $wing; ?></option>
@@ -113,12 +113,12 @@
                     <option selected="selected">Choose one</option>
                         <?php
                             $query = 'SELECT * FROM credentials';
-                            $result = mysqli_query($connection,$query);
-                            while($row = mysqli_fetch_assoc($result)){
+                            $result = pg_query($connection,$query);
+                            while($row = pg_fetch_assoc($result)){
                                 $member_id =$row['member_id'];
                                 $query = "SELECT * FROM member WHERE `member_id`='$member_id'";
-                                $query_run = mysqli_query($connection,$query);
-                                $res = mysqli_fetch_assoc($query_run);
+                                $query_run = pg_query($connection,$query);
+                                $res = pg_fetch_assoc($query_run);
                                 $name =$res['name'];
                                 $memID = $res['member_id'];
                                 if($memID != $_SESSION['member_id']){
@@ -142,8 +142,8 @@
                     
                         <?php
                             $query = 'SELECT * FROM past_members';
-                            $result = mysqli_query($connection,$query);
-                            while($row = mysqli_fetch_assoc($result)){
+                            $result = pg_query($connection,$query);
+                            while($row = pg_fetch_assoc($result)){
                                 $name =$row['name'];
                                 $past_mem_id = $row['member_id'];
                                 ?>

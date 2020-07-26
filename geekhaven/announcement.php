@@ -120,8 +120,8 @@
 				<option selected="selected">Choose one</option>
 				<?php
 					$query = 'SELECT * FROM announcements';
-					$result = mysqli_query($connection,$query);
-					while($row = mysqli_fetch_assoc($result)){
+					$result = pg_query($connection,$query);
+					while($row = pg_fetch_assoc($result)){
 						$name =$row['name'];
 						
 						?>

@@ -10,8 +10,8 @@
 <body>
     <?php
         $query = "SELECT * FROM past_members ";
-        $result = mysqli_query($connection,$query);
-        while($row = mysqli_fetch_assoc($result)){
+        $result = pg_query($connection,$query);
+        while($row = pg_fetch_assoc($result)){
             $name = $row['name'];
             $roll_no = $row['roll_no'];
             $image = $row['image'];
@@ -19,8 +19,8 @@
             $hof = $row['hof'];
             $social_id = $row['social_handles'];
             $query = "SELECT * FROM social_handles WHERE `social_handles_id`='$social_id'";
-            $res = mysqli_query($connection,$query);
-            while($data = mysqli_fetch_assoc($res)){
+            $res = pg_query($connection,$query);
+            while($data = pg_fetch_assoc($res)){
                 $git = $data['github'];
                 $mail = $data['mail'];
                 $face = $data['facebook'];

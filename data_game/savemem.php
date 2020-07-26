@@ -23,16 +23,16 @@
                 
                 if($pass == $cpass){
                     $query = "select * from credentials WHERE username='$username'";
-                    $query_run = mysqli_query($connection,$query);
-                    if(mysqli_num_rows($query_run)>0){
+                    $query_run = pg_query($connection,$query);
+                    if(pg_num_rows($query_run)>0){
                         echo 'USERNAME ALREADY EXIST';
                     }else{
                         $query = "INSERT INTO social_handles VALUES('$social_handle_id','','','','','','','','','','')";
-                        $query_run = mysqli_query($connection,$query);                             
+                        $query_run = pg_query($connection,$query);                             
                         $query = "INSERT INTO member VALUES ('$username', '', '', '', '$member_id', '0', '$social_handle_id', '$cred_id', 'member', '$wing', '$sess')";
-                        $query_run = mysqli_query($connection,$query);     
+                        $query_run = pg_query($connection,$query);     
                         $query = "INSERT INTO credentials VALUES('$cred_id','$username','$pass','0','$member_id')";
-                        $query_run = mysqli_query($connection,$query);
+                        $query_run = pg_query($connection,$query);
                         header('location:../geekhaven/addmember.php');
                     }
                 }
@@ -41,9 +41,9 @@
             if(isset($_POST['select_mem_btn'])){
                 $memID = $_POST['members'];
                 $query = "SELECT * FROM member WHERE `member_id`='$memID'";
-                $query_run = mysqli_query($connection,$query);
-                if(mysqli_num_rows($query_run)>0){
-                    while($row = mysqli_fetch_assoc($query_run)){
+                $query_run = pg_query($connection,$query);
+                if(pg_num_rows($query_run)>0){
+                    while($row = pg_fetch_assoc($query_run)){
                         $name = $row['name'];
                         $roll_no = $row['roll_no'];
                         $image = $row['image'];
@@ -58,13 +58,13 @@
                     }
                     echo $name;
                     $query = "DELETE FROM credentials WHERE `credentialsID`='$cred_id'";
-                    $query_run = mysqli_query($connection,$query);
+                    $query_run = pg_query($connection,$query);
                     
                     $query = "DELETE FROM member WHERE `member_id`='$memID'";
-                    $query_run = mysqli_query($connection,$query);
+                    $query_run = pg_query($connection,$query);
 
                     $query = "INSERT INTO past_members VALUES ('$name', '$roll_no', '$image', '$des', '$member_id', '$hof', '$social_handles', '$post', '$wing', '$session')";
-                    $query_run = mysqli_query($connection,$query);
+                    $query_run = pg_query($connection,$query);
                     
                     echo $query;
                     header('location:../geekhaven/addmember.php');
@@ -76,17 +76,17 @@
             if(isset($_POST['remove_past_mem_btn'])){
                 $past_mem_id = $_POST['past_members'];
                 $query = "SELECT * FROM past_members WHERE `member_id`='$past_mem_id'";
-                $query_run = mysqli_query($connection,$query);
-                if(mysqli_num_rows($query_run)>0){
-                    while($row = mysqli_fetch_assoc($query_run)){
+                $query_run = pg_query($connection,$query);
+                if(pg_num_rows($query_run)>0){
+                    while($row = pg_fetch_assoc($query_run)){
                         $handle_id = $row['social_handles'];
                     }
                 }
                 $query = "DELETE FROM past_members WHERE `member_id`='$past_mem_id'";
-                $query_run = mysqli_query($connection,$query);
+                $query_run = pg_query($connection,$query);
 
                 $query = "DELETE FROM social_handles WHERE `social_handles_id`='$handle_id'";
-                $query_run = mysqli_query($connection,$query);
+                $query_run = pg_query($connection,$query);
                 header('location:../geekhaven/addmember.php');
             }
 ?>

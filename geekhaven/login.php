@@ -75,10 +75,10 @@
                 $pass = $_POST['password'];
                 $time = time()*1000;
                 $query = "select * from credentials WHERE username='$username' AND password='$pass'"; 
-                $query_run = mysqli_query($connection,$query);
-                if(mysqli_num_rows($query_run)>0){
-                    $result = mysqli_query($connection,$query);
-                    while($row = mysqli_fetch_assoc($result)){
+                $query_run = pg_query($connection,$query);
+                if(pg_num_rows($query_run)>0){
+                    $result = pg_query($connection,$query);
+                    while($row = pg_fetch_assoc($result)){
                         $mem_id =$row['member_id'];
                         $admin = $row['admin_value'];
                     }
