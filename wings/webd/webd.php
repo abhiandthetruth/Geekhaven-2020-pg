@@ -3,7 +3,7 @@
     require "../../database/member_info.php";
     $id=pg_escape_string($connection,$_GET['id']);
     $wing_id = $id;
-    $query = "SELECT * FROM wings WHERE wing_id::int='$wing_id'";
+    $query = "SELECT * FROM wings WHERE wing_id='$wing_id'";
     $result = pg_query($connection,$query);
     while($row = pg_fetch_assoc($result)){
         $wing = $row['wing'];
@@ -82,7 +82,7 @@
           <div class="row">
 
             <?php
-              $query = "SELECT * FROM announcements WHERE `organizer`='$wing'";
+              $query = "SELECT * FROM announcements WHERE organizer='$wing'";
 
               $result = pg_query($connection,$query);
               while($row = pg_fetch_assoc($result)){
@@ -143,7 +143,7 @@
 
         <section class="container title-cards">
         <?php
-          $query = "SELECT * FROM Projects WHERE wing_id::int='$wing_id'";
+          $query = "SELECT * FROM Projects WHERE wing_id='$wing_id'";
 
           $result = pg_query($connection,$query);
           while($row = pg_fetch_assoc($result)){
@@ -364,7 +364,7 @@
         <hr class="line">
         <div class="row div-blog" style="display: flex;justify-content: space-evenly;margin-left: 0px;margin-right: 0px;">        
         <?php
-          $query = "SELECT * FROM blogs WHERE wing_id::int='$wing_id' ";
+          $query = "SELECT * FROM blogs WHERE wing_id='$wing_id' ";
           $result = pg_query($connection,$query);
           while($row = pg_fetch_assoc($result)){
               $title = $row['blog_title'];
