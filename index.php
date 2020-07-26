@@ -83,7 +83,7 @@
             $wingname =$row['wing'];
             $winginfo =$row['info'];
             $id =$row['wing_id'];
-            $logo = base64_encode($row['logo']);
+            $logo = base64_encode(pg_unescape_bytea($row['logo']));
             ?>
             <div class="col-12 col-sm-6 col-md-4 margin-div-bottom">
 <!-- image -->
