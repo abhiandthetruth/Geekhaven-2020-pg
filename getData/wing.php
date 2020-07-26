@@ -14,8 +14,8 @@
         while($row = pg_fetch_assoc($result)){
             $wing = $row['wing'];
             $info = $row['info'];
-            $logo = $row['logo'];
-            $image = $row['image'];
+            $logo = pg_unescape_bytea($row['logo']);
+            $image = pg_unescape_bytea($row['image']);
             $link = $row['web_link'];
             ?>
             <div class=card>

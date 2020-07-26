@@ -14,7 +14,7 @@
         while($row = pg_fetch_assoc($result)){
             $title = $row['blog_title'];
             $des = $row['description'];
-            $image = $row['image'];
+            $image = pg_unescape_bytea($row['image']);
             $link = $row['blog_link'];
             ?>
             <div class=card>

@@ -9,7 +9,7 @@
         $wing = $row['wing'];
         $info = $row['info'];
         $logo = $row['logo'];
-        $image = $row['image'];
+        $image = pg_unescape_bytea($row['image']);
         $wingName =$row['wing'];
         $link = $row['web_link'];
     }
@@ -231,7 +231,7 @@
                     while($row = pg_fetch_assoc($result)){
                         $name = $row['name'];
                         $roll_no = $row['roll_no'];
-                        $image = $row['image'];
+                        $image = pg_unescape_bytea($row['image']);
                         $des = $row['description'];
                         $hof = $row['hof'];
                         $social_id = $row['social_handles'];
@@ -293,7 +293,7 @@
                     while($row = pg_fetch_assoc($result)){
                         $name = $row['name'];
                         $roll_no = $row['roll_no'];
-                        $image = $row['image'];
+                        $image = pg_unescape_bytea($row['image']);
                         $des = $row['description'];
                         $hof = $row['hof'];
                         $social_id = $row['social_handles'];
@@ -369,7 +369,7 @@
           while($row = pg_fetch_assoc($result)){
               $title = $row['blog_title'];
               $des = $row['description'];
-              $image = $row['image'];
+              $image = pg_unescape_bytea($row['image']);
               $link = $row['blog_link'];
               ?>
               <div class="col-12 col-sm-12 col-md-3 blog-div whiteToblackBg">

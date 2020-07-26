@@ -15,7 +15,7 @@
         while($row = pg_fetch_assoc($result)){
             $name = $row['name'];
             $roll_no = $row['roll_no'];
-            $image = $row['image'];
+            $image = pg_unescape_bytea($row['image']);
             $des = $row['description'];
             $hof = $row['hof'];
             $social_id = $row['social_handles'];

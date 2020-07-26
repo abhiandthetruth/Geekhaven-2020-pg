@@ -16,7 +16,7 @@
             $pro_link = $row['project_link'];
             $code = $row['source_code_link'];
             $des = $row['description'];
-            $image = $row['image'];
+            $image = pg_unescape_bytea($row['image']);
             $blog_link = $row['blog_link'];
             ?>
             <div class=card>

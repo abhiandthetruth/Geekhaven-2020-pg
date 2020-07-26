@@ -21,7 +21,7 @@
             $time = $row['time'];
             $topic = $row['topic'];
             $details = $row['details'];
-            $image = $row['image'];
+            $image = pg_unescape_bytea($row['image']);
             
             ?>
             <div class=card>
