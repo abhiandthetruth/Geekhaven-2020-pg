@@ -20,7 +20,7 @@
     $query = "CREATE TABLE member (
         name varchar(255),
         roll_no varchar(255),
-        image longblob,
+        image bytea,
         description varchar(12000),
         member_id varchar(255),
         hof varchar(255),
@@ -38,8 +38,8 @@
     $query = "CREATE TABLE past_members (
         name varchar(255),
         roll_no varchar(255),
-        image longblob,
-        descriptionvarchar(12000),
+        image bytea,
+        description varchar(12000),
         member_id varchar(255),
         hof varchar(255),
         social_handles varchar(255),
@@ -56,7 +56,7 @@
         credentialsID varchar(255),
         username varchar(255),
         password varchar(255),
-        admin_valuevarchar(255),
+        admin_value varchar(255),
         member_id varchar(255),
         PRIMARY KEY (credentialsID),
         FOREIGN KEY (member_id) REFERENCES member(member_id)   
@@ -68,8 +68,8 @@
         wing_id varchar(255),
         wing varchar(255),
         info varchar(12000),
-        logo longblob,
-        image longblob,                
+        logo bytea,
+        image bytea,                
         PRIMARY KEY (wing_id)
     );";
 
@@ -79,11 +79,11 @@
         wing_id varchar(255),
         member_id varchar(255),
         project_name varchar(255),
-        project_linkvarchar(255),
-        blog_linkvarchar(255),
-        source_code_linkvarchar(255),
-        descriptionvarchar(12000),
-        image longblob,        
+        project_link varchar(255),
+        blog_link varchar(255),
+        source_code_link varchar(255),
+        description varchar(12000),
+        image bytea,        
         FOREIGN KEY (wing_id) REFERENCES wings(wing_id),
         FOREIGN KEY (member_id) REFERENCES member(member_id)
     );";
@@ -94,9 +94,9 @@
         wing_id varchar(255),
         member_id varchar(255),
         blog_title varchar(255),
-        descriptionvarchar(12000),
-        blog_linkvarchar(255),        
-        image longblob,        
+        description varchar(12000),
+        blog_link varchar(255),        
+        image bytea,        
         FOREIGN KEY (member_id) REFERENCES member(member_id),
         FOREIGN KEY (wing_id) REFERENCES wings(wing_id)        
     );";
@@ -106,15 +106,15 @@
     $query = "CREATE TABLE announcements (
         member_id varchar(255),
         name varchar(255),
-        organizervarchar(255),
-        venuevarchar(255),        
-        datevarchar(255),        
-        timevarchar(255),        
-        topicvarchar(255),        
-        detailsvarchar(12000),        
-        linkvarchar(255),        
-        attachmentvarchar(255),        
-        image longblob,        
+        organizer varchar(255),
+        venue varchar(255),        
+        date varchar(255),        
+        time varchar(255),        
+        topic varchar(255),        
+        details varchar(12000),        
+        link varchar(255),        
+        attachment varchar(255),        
+        image bytea,        
         FOREIGN KEY (member_id) REFERENCES member(member_id)
     );";
 
@@ -123,11 +123,11 @@
     $query = "CREATE TABLE contact (
         made_on varchar(255),
         first_name varchar(255),
-        last_namevarchar(255),
-        descriptionvarchar(12000),        
-        emailvarchar(255),        
-        mobilevarchar(255),        
-        gendervarchar(255)               
+        last_name varchar(255),
+        description varchar(12000),        
+        email varchar(255),        
+        mobile varchar(255),        
+        gender varchar(255)               
     );";
 
     pg_query($connection,$query) ;
