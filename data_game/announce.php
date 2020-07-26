@@ -15,7 +15,7 @@
                 $link = $_POST['link'];
                 $attach = $_POST['attach'];
                 $image = pg_esacpe_bytea(file_get_contents($_FILES['image']['tmp_name']));
-                $query = "SELECT * FROM announcements WHERE `name`='$name'";
+                $query = "SELECT * FROM announcements WHERE name='$name'";
                 $query_run = pg_query($connection,$query);
                 if(pg_num_rows($query_run)>0){
                     echo 'error : ANNOUNCEMENT ALREADY EXIST';
@@ -28,10 +28,10 @@
             }
             if(isset($_POST['select_btn'])){
                 $name = $_POST['announcements'];
-                $query = "SELECT * FROM announcements WHERE `name`='$name'";
+                $query = "SELECT * FROM announcements WHERE name='$name'";
                 $query_run = pg_query($connection,$query);
                 if(pg_num_rows($query_run)>0){
-                    $query = "DELETE FROM announcements WHERE `name`='$name'";
+                    $query = "DELETE FROM announcements WHERE name='$name'";
                     $query_run = pg_query($connection,$query);
                     header('location:../geekhaven/announcement.php');
                 }else{

@@ -33,7 +33,7 @@
             $n_image = pg_esacpe_bytea(file_get_contents($_FILES['image']['tmp_name']));
             
             
-            $query = "UPDATE wings SET `wing`='$wing',`info`='$info',`logo`='$n_logo',`image`='$n_image',`web_link`='$web_link'  WHERE `wing_id`='$wing_id'" ;  
+            $query = "UPDATE wings SET wing='$wing',info='$info',logo='$n_logo',image='$n_image',web_link='$web_link'  WHERE wing_id='$wing_id'" ;  
             $query_run = pg_query($connection,$query);
             echo 'Updated successfully';
             header('location:../geekhaven/wing.php');     
@@ -44,7 +44,7 @@
             $wing = $_POST['new_wing'];
             $info = $_POST['new_info'];
             
-            $query = "DELETE FROM wings WHERE `wing_id`='$wing_id'" ;  
+            $query = "DELETE FROM wings WHERE wing_id='$wing_id'" ;  
             $query_run = pg_query($connection,$query);
             header('location:../geekhaven/wing.php');     
                   

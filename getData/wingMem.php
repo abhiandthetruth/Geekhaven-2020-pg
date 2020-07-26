@@ -10,7 +10,7 @@
 <body>
     <?php
         $wing_name = "foss";
-        $query = "SELECT * FROM member WHERE `wing`='$wing_name'";
+        $query = "SELECT * FROM member WHERE wing='$wing_name'";
         $result = pg_query($connection,$query);
         while($row = pg_fetch_assoc($result)){
             $name = $row['name'];
@@ -19,7 +19,7 @@
             $des = $row['description'];
             $hof = $row['hof'];
             $social_id = $row['social_handles'];
-            $query = "SELECT * FROM social_handles WHERE `social_handles_id`='$social_id'";
+            $query = "SELECT * FROM social_handles WHERE social_handles_id='$social_id'";
             $res = pg_query($connection,$query);
             while($data = pg_fetch_assoc($res)){
                 $git = $data['github'];

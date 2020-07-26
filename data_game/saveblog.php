@@ -20,10 +20,10 @@
             }
             if(isset($_POST['select_blog_btn'])){
                 $name = $_POST['blogs'];
-                $query = "SELECT * FROM blogs WHERE `blog_title`='$name'";
+                $query = "SELECT * FROM blogs WHERE blog_title='$name'";
                 $query_run = pg_query($connection,$query);
                 if(pg_num_rows($query_run)>0){
-                    $query = "DELETE FROM blogs WHERE `blog_title`='$name'";
+                    $query = "DELETE FROM blogs WHERE blog_title='$name'";
                     $query_run = pg_query($connection,$query);
                     header('location:../geekhaven/blog.php');
                 }else{

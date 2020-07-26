@@ -18,7 +18,7 @@
             $des = $row['description'];
             $hof = $row['hof'];
             $social_id = $row['social_handles'];
-            $query = "SELECT * FROM social_handles WHERE `social_handles_id`='$social_id'";
+            $query = "SELECT * FROM social_handles WHERE social_handles_id='$social_id'";
             $res = pg_query($connection,$query);
             while($data = pg_fetch_assoc($res)){
                 $git = $data['github'];

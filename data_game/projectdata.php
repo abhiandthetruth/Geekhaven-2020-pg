@@ -23,12 +23,12 @@
             }
             if(isset($_POST['select_pro_btn'])){
                 $name = $_POST['projects'];
-                $query = "SELECT * FROM Projects WHERE `project_name`='$name'";
+                $query = "SELECT * FROM Projects WHERE project_name='$name'";
                 $query_run = pg_query($connection,$query);
                 $ex = pg_num_rows($query_run);
                 echo $ex;
                 if(pg_num_rows($query_run)>0){
-                    $query = "DELETE FROM Projects WHERE `project_name`='$name'";
+                    $query = "DELETE FROM Projects WHERE project_name='$name'";
                     $query_run = pg_query($connection,$query);
                     
                     header('location:../geekhaven/project.php');                

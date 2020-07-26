@@ -40,7 +40,7 @@
 
             if(isset($_POST['select_mem_btn'])){
                 $memID = $_POST['members'];
-                $query = "SELECT * FROM member WHERE `member_id`='$memID'";
+                $query = "SELECT * FROM member WHERE member_id='$memID'";
                 $query_run = pg_query($connection,$query);
                 if(pg_num_rows($query_run)>0){
                     while($row = pg_fetch_assoc($query_run)){
@@ -57,10 +57,10 @@
                         $cred_id =$row['cred_id'];
                     }
                     echo $name;
-                    $query = "DELETE FROM credentials WHERE `credentialsID`='$cred_id'";
+                    $query = "DELETE FROM credentials WHERE credentialsID='$cred_id'";
                     $query_run = pg_query($connection,$query);
                     
-                    $query = "DELETE FROM member WHERE `member_id`='$memID'";
+                    $query = "DELETE FROM member WHERE member_id='$memID'";
                     $query_run = pg_query($connection,$query);
 
                     $query = "INSERT INTO past_members VALUES ('$name', '$roll_no', '$image', '$des', '$member_id', '$hof', '$social_handles', '$post', '$wing', '$session')";
@@ -75,17 +75,17 @@
 
             if(isset($_POST['remove_past_mem_btn'])){
                 $past_mem_id = $_POST['past_members'];
-                $query = "SELECT * FROM past_members WHERE `member_id`='$past_mem_id'";
+                $query = "SELECT * FROM past_members WHERE member_id='$past_mem_id'";
                 $query_run = pg_query($connection,$query);
                 if(pg_num_rows($query_run)>0){
                     while($row = pg_fetch_assoc($query_run)){
                         $handle_id = $row['social_handles'];
                     }
                 }
-                $query = "DELETE FROM past_members WHERE `member_id`='$past_mem_id'";
+                $query = "DELETE FROM past_members WHERE member_id='$past_mem_id'";
                 $query_run = pg_query($connection,$query);
 
-                $query = "DELETE FROM social_handles WHERE `social_handles_id`='$handle_id'";
+                $query = "DELETE FROM social_handles WHERE social_handles_id='$handle_id'";
                 $query_run = pg_query($connection,$query);
                 header('location:../geekhaven/addmember.php');
             }

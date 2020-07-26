@@ -3,7 +3,7 @@ if(isset($_GET['id'])){
     require "../../database/member_info.php";
     $id=pg_escape_string($connection,$_GET['id']);
     $wing_id = $id;
-    $query = "SELECT * FROM wings WHERE `wing_id`='$wing_id'";
+    $query = "SELECT * FROM wings WHERE wing_id='$wing_id'";
     $result = pg_query($connection,$query);
     while($row = pg_fetch_assoc($result)){
         $wing = $row['wing'];
@@ -65,7 +65,7 @@ if(isset($_GET['id'])){
 
 
           <?php
-              $query = "SELECT * FROM announcements WHERE `organizer`='$wing'";
+              $query = "SELECT * FROM announcements WHERE organizer='$wing'";
 
               $result = pg_query($connection,$query);
               while($row = pg_fetch_assoc($result)){

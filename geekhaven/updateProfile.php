@@ -96,7 +96,7 @@
                 $roll = $_POST['roll_no'];
                 $img = $_POST['image'];
                 $description = $_POST['description'];
-                $query = "UPDATE member SET `name`='$name',`roll_no`='$roll',`image`='$img',`description`='$description' WHERE `member_id`='$mem_id'";
+                $query = "UPDATE member SET name='$name',roll_no='$roll',image='$img',description='$description' WHERE member_id='$mem_id'";
                 $query_run = pg_query($connection,$query);
                 echo "UPDATED SUCCESSFULLY";
             }
