@@ -56,7 +56,7 @@
         credentialsID varchar(255),
         username varchar(255),
         password varchar(255),
-        admin_value int(255),
+        admin_value int,
         member_id varchar(255),
         PRIMARY KEY (credentialsID),
         FOREIGN KEY (member_id) REFERENCES member(member_id)   
