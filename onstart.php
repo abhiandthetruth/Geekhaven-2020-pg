@@ -69,7 +69,8 @@
         wing varchar(255),
         info varchar(12000),
         logo bytea,
-        image bytea,                
+        image bytea,
+        link varchar(255),          
         PRIMARY KEY (wing_id)
     );";
 
